@@ -4,6 +4,7 @@ const GridLayout = () => {
   const [clickBox, setClickBox] = useState([]);
   const [totalCount, setTotalCount] = useState(null)
   const boxElement = document.querySelector("div.main-container div");
+
   const removeColor = () => {
     console.log("remove color activate");
     setTotalCount(7)
@@ -12,62 +13,68 @@ const GridLayout = () => {
     // console.log("The press element is", e.target.innerText);
     e.target.style.backgroundColor = 'green';
 
-
-    if (clickBox.length >= 7) {
+    const Pushing2Array = (e) => {
       clickBox.push(Number(e.target.innerText))
-      setClickBox(clickBox)
+      const newArr = clickBox.map((val) => {
+        return val
+      });
+
+      // newArr.push(Number(e.target.innerText));
+      setClickBox(newArr);
+      console.log("This is final array : ", clickBox);
+    }
+    if (clickBox.length >= 7) {
+      Pushing2Array(e)
       removeColor()
+
     }
     else {
-      clickBox.push(Number(e.target.innerText))
+      Pushing2Array(e)
       setClickBox(clickBox)
     }
-    // console.log("This is click box", clickBox.length);
   }
 
 
   useEffect(() => {
-    if (totalCount) {
+    if (totalCount >= 0) {
       // Use setTimeout within useEffect to avoid potential memory leaks
-      const timer = setTimeout(() => {
-        console.log("This element going to deactivate: ", boxElement.childNodes[clickBox.length - 1]);
+      setTimeout(() => {
+        // console.log("This element going to deactivate: ", boxElement.childNodes[clickBox.length - 1]);
+        boxElement.childNodes[clickBox[clickBox.length - 1] - 1].style.backgroundColor = 'red'
+        reduceCount()
         clickBox.pop()
-        setClickBox(clickBox)
-        setTotalCount(totalCount - 1)
+        const newDivBox = clickBox.map((val) => {
+          return val
+        })
+        setClickBox(newDivBox)
 
-      }, 300);
+      }, 500);
 
       console.log("This is log : ", clickBox);
 
     }
-  }, [clickBox]);
+  }, [clickBox, totalCount]);
 
-  // useEffect(() => {
-  //   if (clickBox.length > 0) {
-  //     const revertTimer = setTimeout(() => {
-  //       const lastClicked = clickBox.pop(); // Remove last clicked element
-  //       const divs = document.querySelectorAll(".main-container div");
+  const reduceCount = () => {
+    setTotalCount(totalCount - 1)
 
-  //       divs[lastClicked - 1].style.backgroundColor = "red"; 
-  //     }, 500);
+  }
 
-  //   }
-  // }, [clickBox]);
+
 
   return (
     <>
       <div className="main-container flex justify-center items-center h-full">
 
-        <div className=" text-red-300 grid grid-cols-3-200px gap-5"
-          onClick={boxElementPress}>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">1</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">2</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">3</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">4</div>
-          <div className="h-[200px] bg-red-500 col-start-3 col-end-span-1 flex justify-center items-center">5</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">6</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">7</div>
-          <div className="h-[200px] bg-red-500 flex justify-center items-center">8</div>
+        <div className=" text-red-300 grid grid-cols-3-200px gap-5">
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>1</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>2</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>3</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>4</div>
+          <div className="h-[200px] bg-red-500 col-start-3 col-end-span-1 flex cursor-pointer justify-center items-center" onClick={boxElementPress}>5</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>6</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>7</div>
+          <div className="h-[200px] bg-red-500 flex justify-center items-center cursor-pointer" onClick={boxElementPress}>8</div>
         </div>
       </div>
     </>
