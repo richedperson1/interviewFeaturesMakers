@@ -15,13 +15,12 @@ const GridLayout = () => {
 
     const Pushing2Array = (e) => {
       clickBox.push(Number(e.target.innerText))
-      const newArr = clickBox.map((val) => {
-        return val
-      });
+      let newArr = [...clickBox]
 
       // newArr.push(Number(e.target.innerText));
       setClickBox(newArr);
-      console.log("This is final array : ", clickBox);
+      newArr = null;
+      console.log("This is final array : ", newArr);
     }
     if (clickBox.length >= 7) {
       Pushing2Array(e)
