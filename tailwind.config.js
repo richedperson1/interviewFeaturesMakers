@@ -9,13 +9,6 @@ export default {
         "sharks-image":
           "url('https://media.istockphoto.com/id/1415862623/photo/outdoor-adventures-in-norway-hammock-relax-in-nature.jpg?s=2048x2048&w=is&k=20&c=hOfoQzfgHa2ZZNtspv-XSo7GwmfaZu7XqhmQd1gIjOU=')",
       },
-      gridTemplateColumns: {
-        // Simple 16 column grid
-        "3-200px": "repeat(3,200px)",
-
-        // Complex site-specific column configuration
-        footer: "200px minmax(900px, 1fr) 100px",
-      },
     },
   },
   plugins: [],
