@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom/client'
 // import App from './featureTailwindCSS/app'
 // import GridLayout from "./gridButtonToggle/app"
 import FolderTree from './folderTreeStructure/folder'
+import TodoList from './todoList/app'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <FolderTree />
+    <TodoList />
   </React.StrictMode>,
 )
