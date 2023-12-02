@@ -1,9 +1,13 @@
-import SearchAppBar from "./components/header/head"
-
+// import SearchAppBar from "./components/header/head"
+import CardsDisplay from "./components/body/body"
+import FormExample from "./components/header/headBootstrap"
 const MainApp4Carts = () => {
     return (
         <>
-            <SearchAppBar />
+
+            <FormExample />
+            <CardsDisplay />
+
         </>
     )
 }

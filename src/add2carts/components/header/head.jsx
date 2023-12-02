@@ -11,7 +11,7 @@ export default function SearchAppBar() {
                     <div className="search-bar inline" style={{ display: "inline-block" }}>
                         <TextField id="standard-basic" label="Standard" variant="standard" sx={{ backgroundColor: "white" }} />
                     </div>
-                    <div className="logo"></div>
+                    <div className="logo sm:hidden"></div>
                 </div>
             </div>
         </>
