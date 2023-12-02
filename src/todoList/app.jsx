@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import UserContext from '../context/userContext'
 
 const TodoList = () => {
     const [todo, setTodo] = useState([])
     const [inputText, setInputText] = useState("")
+    const { user } = useContext(UserContext)
     return (
         <>
+
             <div className="container bg-blue-500">
                 <div>TodoList</div>
 
@@ -21,6 +24,9 @@ const TodoList = () => {
                         return (<div className='text-white' key={`val-${ind}`}>{val}</div>)
                     })}
                 </div>
+                <main className="domain">
+                    This is final words : {user}
+                </main>
             </div >
         </>
     )
