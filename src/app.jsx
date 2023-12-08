@@ -1,6 +1,8 @@
 import Effecting from './useEffecting/main';
 import UserContextProviderFun from './context/userContextProvider';
 import TodoList from './todoList/app';
+import Forming from './todoList/useReducer';
+
 const App = () => {
 
     // const { user } = useContext(UserContext)
@@ -9,7 +11,7 @@ const App = () => {
         <>
             <UserContextProviderFun>
                 <TodoList />
-                <Effecting />
+                <Forming />
 
             </UserContextProviderFun>
         </>
