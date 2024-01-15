@@ -33,31 +33,34 @@ const Expense_tracker = () => {
                     </div>
 
                     <div className="income-expense-layout flex mt-2 gap-1">
-                        <span className="flex flex-col w-[50%] p-5 bg-slate-500">
+                        <span className="flex flex-col p-2 w-[50%]  bg-slate-500">
                             <span className="title text-slate-100">Income</span>
                             <span className="title text-green-500">${total_income}</span>
                         </span>
-                        <span className="flex flex-col w-[50%] p-5 bg-slate-500">
+                        <span className="flex flex-col w-[50%] p-2 bg-slate-500">
                             <span className="title text-slate-100">Expense</span>
                             <span className="title text-red-600">${total_expense}</span>
                         </span>
                     </div>
                     <div className="cash-transaction flex flex-col py-5">
                         <h1 className="text-slate-300 pb-5">History</h1>
-                        {
-                            history_items && history_items.map((val) => {
-                                return (
-                                    <>
+                        <div className="wrapper overflow-y-auto h-[200px]">
 
-                                        <span className={`flex justify-between item-center bg-slate-500 p-2 border-r-4 {} border-red-700 mt-2 ${val.num > 0 ? "border-g-4" : "border-g-4"}`}>
-                                            <span className="text-slate-300">{val.name}</span>
-                                            <span className="flow text-slate-300">+{val.num}</span>
-                                        </span>
-                                    </>
-                                )
-                            })
-                        }
 
+                            {
+                                history_items && history_items.map((val) => {
+                                    return (
+                                        <>
+
+                                            <span className={`flex justify-between item-center bg-slate-500 p-2 border-r-4  mt-2 ${val.num > 0 ? "border-green-700 border-g-4" : "border-red-4 border-red-700"}`}>
+                                                <span className="text-slate-300">{val.name}</span>
+                                                <span className="flow text-slate-300">{val.num > 0 ? `+${val.num}` : `${val.num}`}</span>
+                                            </span>
+                                        </>
+                                    )
+                                })
+                            }
+                        </div>
 
                     </div>
                     {/* adding the transitions */}
